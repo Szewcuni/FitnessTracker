@@ -12,7 +12,7 @@ import pl.wsb.fitnesstracker.user.api.User;
 import java.util.Date;
 
 @Entity
-@Table(name = "trainings")
+@Table(name = "training")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
@@ -23,7 +23,7 @@ public class Training {
     @Nullable
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -37,7 +37,7 @@ public class Training {
     @Column(name = "activity_type", nullable = false)
     private ActivityType activityType;
 
-    @Column(nullable = false)
+    @Column(name = "distance", nullable = false)
     private double distance;
 
     @Column(name = "average_speed", nullable = false)

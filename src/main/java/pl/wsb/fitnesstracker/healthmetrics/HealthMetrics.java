@@ -22,23 +22,24 @@ public class HealthMetrics {
     @Nullable
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false)
+    @Column(name = "date", nullable = false)
     private LocalDate date;
 
-    @Column(nullable = false)
-    private double weight;
+    @Column(name = "weight", nullable = false)
+    private Double weight;
 
-    @Column(nullable = false)
-    private double height;
+    @Column(name = "height", nullable = false)
+    private Double height;
 
     @Column(name = "heart_rate", nullable = false)
-    private int heartRate;
+    private Integer heartRate;
 
-    public HealthMetrics(User user, LocalDate date, double weight, double height, int heartRate) {
+
+    public HealthMetrics(User user, LocalDate date, Double weight, Double height, Integer heartRate) {
         this.user = user;
         this.date = date;
         this.weight = weight;
