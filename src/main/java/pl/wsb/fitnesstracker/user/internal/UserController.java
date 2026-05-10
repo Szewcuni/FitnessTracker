@@ -6,6 +6,7 @@ import pl.wsb.fitnesstracker.user.api.User;
 import pl.wsb.fitnesstracker.user.api.UserDto;
 import pl.wsb.fitnesstracker.user.api.UserProvider;
 import pl.wsb.fitnesstracker.user.api.UserService;
+import pl.wsb.fitnesstracker.user.api.UserBasicInfoDto;
 
 import java.util.List;
 
@@ -41,5 +42,10 @@ class UserController {
                 .toList();
     }
 
-
+    @GetMapping("/simple")
+    public List<UserBasicInfoDto> getUsersBasicInfo() {
+        return this.userProvider.findAllUsers().stream()
+                .map(this.userMapper::toUserBasicInfoDto)
+                .toList();
+    }
 }
